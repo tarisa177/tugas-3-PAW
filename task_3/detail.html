@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Data Pendaftar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Detail Data Pendaftar</h1>
+        <p>Informasi yang telah mengisi formulir</p>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h2>Informasi Pendaftar</h2>
+
+            <table>
+                <tr>
+                    <th>Data</th>
+                    <th>Keterangan</th>
+                </tr>
+                <tr>
+                    <td>Nama Lengkap</td>
+                    <td id="nama">-</td>
+                </tr>
+                <tr>
+                    <td>NIM</td>
+                    <td id="nim">-</td>
+                </tr>
+                <tr>
+                    <td>Tempat, Tanggal Lahir</td>
+                    <td id="ttl">-</td>
+                </tr>
+                <tr>
+                    <td>Jenis Kelamin</td>
+                    <td id="jk">-</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td id="email">-</td>
+                </tr>
+                <tr>
+                    <td>Program Studi</td>
+                    <td id="prodi">-</td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td id="alamat">-</td>
+                </tr>
+            </table>
+
+            <a href="index.html" class="button-link">
+                Kembali ke Form
+            </a>
+        </div>
+    </main>
+    
+<!-- Catatan tampilan query string -->
+        <div class="catatan-query">
+           <h3>Contoh Query String</h3>
+            <p>Berikut contoh URL yang digunakan:</p>
+
+           <code>
+                detail.html?nama=Tarisa&amp;nim=124140039&amp;tempat=Bandar+Lampung&amp;tanggal=2006-05-10&amp;jk=Perempuan&amp;email=tarisa%40example.com&amp;prodi=PAW+RA&amp;alamat=Padang+Panjang
+           </code>
+
+        </div>
+
+
+    <footer>
+        <p>Pemrograman Aplikasi Web</p>
+    </footer>
+
+    <script>
+        // Membaca data yang dikirim melalui URL
+        const params = new URLSearchParams(window.location.search);
+
+        // Mengambil setiap data dari query string
+        const nama = params.get("nama") || "-";
+        const nim = params.get("nim") || "-";
+        const tempat = params.get("tempat") || "-";
+        const tanggal = params.get("tanggal") || "";
+        const jk = params.get("jk") || "-";
+        const email = params.get("email") || "-";
+        const prodi = params.get("prodi") || "-";
+        const alamat = params.get("alamat") || "-";
+
+        // Mengubah format tanggal menjadi lebih mudah dibaca
+        let tanggalLahir = "-";
+
+        if (tanggal) {
+            const bagian = tanggal.split("-");
+            tanggalLahir = bagian[2] + "-" + bagian[1] + "-" + bagian[0];
+        }
+
+        // Menampilkan data ke dalam tabel
+        document.getElementById("nama").textContent = nama;
+        document.getElementById("nim").textContent = nim;
+        document.getElementById("ttl").textContent =
+            tempat + ", " + tanggalLahir;
+        document.getElementById("jk").textContent = jk;
+        document.getElementById("email").textContent = email;
+        document.getElementById("prodi").textContent = prodi;
+        document.getElementById("alamat").textContent = alamat;
+    </script>
+
+</body>
+</html>
